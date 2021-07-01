@@ -18,7 +18,7 @@ module.exports = {
       colors: {
         primary: "#ffd615",
         my_blue:"#39bdc8",
-        my_voilet:"#775ada",
+        my_voilet:"#a696c8",
         my_red:"#cb3b3b",
         transparent: "transparent",
         current: "currentColor",
