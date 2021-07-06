@@ -2,16 +2,23 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Work from "../pages/Work/Work";
 import Home from "../pages/Home/Home";
+import React, { useState } from "react";
 
 function App() {
+  const [time, setTime] = useState(25);
   return (
-    <div className="mx-auto lg:w-1/3 md:w-2/3 md:border  ">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/start" component={Work} />
-      </Switch>
-    </div>
+    <React.Fragment>
+      <div className="mx-auto lg:w-1/3 md:w-2/3 md:border  ">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/start">
+            <Work time={5} />
+          </Route>
+        </Switch>
+      </div>
+    </React.Fragment>
   );
 }
 
 export default App;
+   

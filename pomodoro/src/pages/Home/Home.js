@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { icons, header } from "../../assets/assets";
-import Quick from "../Quick/Quick";
+import Quick from "../../components/Quick/Quick";
+import { Link } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
 
 function Home() {
+  const [openModal, setOpenModal] = useState(true);
   return (
     <div>
       {/* // * NAVBAR  */}
@@ -26,6 +29,7 @@ function Home() {
           </div>
         </nav>
       </header>
+
       {/* // * HERO  */}
       <main>
         <section className="mx-auto ">
@@ -33,9 +37,11 @@ function Home() {
             <img src={header} alt="header" className="w-full h-full" />
           </div>
           <div className="mx-auto my-2  text-center">
-            <button className="py-2 px-4 rounded shadow-lg text-white font-bold bg-my_blue">
-              START
-            </button>
+            <Link to="/start">
+              <button className="py-2 px-4 rounded shadow-lg text-white font-bold bg-my_blue">
+                START
+              </button>
+            </Link>
           </div>
         </section>
       </main>
