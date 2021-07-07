@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/abdouAoufi.github.io/pomodoro/static/css/main.c1c40650.chunk.css",
+    "main.js": "/abdouAoufi.github.io/pomodoro/static/js/main.49e46121.chunk.js",
+    "main.js.map": "/abdouAoufi.github.io/pomodoro/static/js/main.49e46121.chunk.js.map",
+    "runtime-main.js": "/abdouAoufi.github.io/pomodoro/static/js/runtime-main.89979b38.js",
+    "runtime-main.js.map": "/abdouAoufi.github.io/pomodoro/static/js/runtime-main.89979b38.js.map",
+    "static/css/2.3d6f921d.chunk.css": "/abdouAoufi.github.io/pomodoro/static/css/2.3d6f921d.chunk.css",
+    "static/js/2.a601ff11.chunk.js": "/abdouAoufi.github.io/pomodoro/static/js/2.a601ff11.chunk.js",
+    "static/js/2.a601ff11.chunk.js.map": "/abdouAoufi.github.io/pomodoro/static/js/2.a601ff11.chunk.js.map",
+    "static/js/3.5adc0bd2.chunk.js": "/abdouAoufi.github.io/pomodoro/static/js/3.5adc0bd2.chunk.js",
+    "static/js/3.5adc0bd2.chunk.js.map": "/abdouAoufi.github.io/pomodoro/static/js/3.5adc0bd2.chunk.js.map",
+    "index.html": "/abdouAoufi.github.io/pomodoro/index.html",
+    "static/css/2.3d6f921d.chunk.css.map": "/abdouAoufi.github.io/pomodoro/static/css/2.3d6f921d.chunk.css.map",
+    "static/css/main.c1c40650.chunk.css.map": "/abdouAoufi.github.io/pomodoro/static/css/main.c1c40650.chunk.css.map",
+    "static/js/2.a601ff11.chunk.js.LICENSE.txt": "/abdouAoufi.github.io/pomodoro/static/js/2.a601ff11.chunk.js.LICENSE.txt",
+    "static/media/edit.78f5537e.svg": "/abdouAoufi.github.io/pomodoro/static/media/edit.78f5537e.svg",
+    "static/media/header.a6cbff23.svg": "/abdouAoufi.github.io/pomodoro/static/media/header.a6cbff23.svg",
+    "static/media/settings.be22443e.svg": "/abdouAoufi.github.io/pomodoro/static/media/settings.be22443e.svg",
+    "static/media/stats.a4d7c093.svg": "/abdouAoufi.github.io/pomodoro/static/media/stats.a4d7c093.svg",
+    "static/media/sun.db2717a2.svg": "/abdouAoufi.github.io/pomodoro/static/media/sun.db2717a2.svg",
+    "static/media/undo.abd720f9.svg": "/abdouAoufi.github.io/pomodoro/static/media/undo.abd720f9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.89979b38.js",
+    "static/css/2.3d6f921d.chunk.css",
+    "static/js/2.a601ff11.chunk.js",
+    "static/css/main.c1c40650.chunk.css",
+    "static/js/main.49e46121.chunk.js"
+  ]
+}
