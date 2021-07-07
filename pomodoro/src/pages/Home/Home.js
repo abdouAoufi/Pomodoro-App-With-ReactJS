@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { icons, header } from "../../assets/assets";
 import Quick from "../../components/Quick/Quick";
 import { Link } from "react-router-dom";
-import Modal from "../../components/Modal/Modal";
+import { useDispatch } from "react-redux";
+import { setTime } from "../../store/action/index";
 
-function Home() {
-  const [openModal, setOpenModal] = useState(true);
+function Home(props) {
+  const dispatch = useDispatch();
+
+  const setTimee = (time) => {
+    dispatch(setTime(time));
+    props.history.push("/start");
+  };
+
   return (
     <div>
       {/* // * NAVBAR  */}
@@ -14,6 +21,7 @@ function Home() {
           <div className="w-full flex justify-between items-center p-4">
             <div>
               <img
+                onClick={() => dispatch(setTime(35))}
                 src={icons.stats}
                 alt="stats"
                 className="w-8 h-8 cursor-pointer"
@@ -60,8 +68,24 @@ function Home() {
       </div>
       {/* // ? container of quicks */}
       <div className="flex px-2">
-        <Quick name="working" time="35" color="bg-my_blue" />
-        <Quick name="reading" time="25" color="bg-primary" />
+        <Quick
+          name="working"
+          time="30"
+          color="bg-my_blue"
+          changeTime={setTimee}
+        />
+        <Quick
+          changeTime={setTimee}
+          name="reading"
+          time="25"
+          color="bg-primary"
+        />
+        <Quick
+          changeTime={setTimee}
+          name="learning"
+          time="35"
+          color="bg-my_red"
+        />
       </div>
       <div className="text-center mx-auto cursor-pointer mt-4">
         <svg

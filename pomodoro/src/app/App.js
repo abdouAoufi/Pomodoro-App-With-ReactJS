@@ -11,8 +11,8 @@ function App() {
       <div className="mx-auto lg:w-1/3 md:w-2/3 md:border  ">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/start">
-            <Work time={5} />
+          <Route exact path="/start" component={Work}>
+
           </Route>
         </Switch>
       </div>

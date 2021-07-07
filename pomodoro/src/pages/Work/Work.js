@@ -5,22 +5,29 @@ import "react-step-progress-bar/styles.css";
 import Modal from "../../components/Modal/Modal";
 import TimeContext from "../../context/timeContext";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Work(props) {
+  const duration = useSelector((state) => state.duration);
+  // const taskCompletedFromRedux = useSelector((state) => state.taskCompleted);
   const [openModal, setOpenModal] = useState(false);
-  const [minutes, setMinutes] = useState(props.time);
   const [seconds, setSeconds] = useState(0);
   const [progress, setProgress] = useState(0);
   const [start, setStart] = useState(false);
-  let initialTime = props.time * 60 * 1000;
-  const [time, setTime] = useState(initialTime);
+  const [minutes, setMinutes] = useState(duration);
   const [startStyle, setStartStyle] = useState(
     "py-2 px-4 rounded shadow-2xl text-white font-bold bg-my_blue"
   );
+  let initialTime = duration * 60 * 1000;
   const [textBtn, setTextBnt] = useState("start");
-
+  const [time, setTime] = useState(initialTime);
+  const [taskCompleted, setTaskCompleted] = useState(0);
   useEffect(() => {
     const timer = setTimeout(() => {
+      if (time === 0) {
+        setUp();
+        taskIncrement();
+      }
       if (time > 0 && start) {
         setTime(time - 1000);
         setMinutes(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
@@ -31,6 +38,14 @@ function Work(props) {
     return () => clearTimeout(timer);
   }, [time, start]);
 
+  const taskIncrement = () => {
+    if (taskCompleted < 4) {
+      setTaskCompleted(taskCompleted + 1);
+    } else {
+      alert("You completed today you should go back tomorow ....");
+      props.history.goBack();
+    }
+  };
   const startTimer = () => {
     if (!start) {
       setStartStyle(
@@ -43,15 +58,22 @@ function Work(props) {
     }
   };
   const confirmedState = () => {
+    setOpenModal(false);
+    setUp();
+  };
+
+  const setUp = () => {
+   
+    setStart(false);
+    setTime(duration * 60 * 1000);
+    setMinutes(duration);
+    setSeconds(0);
+    setTextBnt("start");
     setStartStyle(
       "py-2 px-4 rounded shadow-2xl text-white font-bold bg-my_blue"
     );
-    setTextBnt("start");
-    setStart(false);
-    setTime(props.time * 1000);
-    setMinutes(props.time);
-    setSeconds(0);
-    setOpenModal(false);
+
+    setProgress(0);
   };
   return (
     <TimeContext.Provider value={{ status: start, setStatus: setStart }}>
@@ -114,7 +136,7 @@ function Work(props) {
                 {minutes < 10 ? `0${minutes}` : minutes} :{" "}
                 {seconds < 10 ? `0${seconds}` : seconds}
               </p>
-              <p className="font-light text-my_red ">2 of 4</p>
+              <p className="font-light text-my_red ">{taskCompleted} of 4</p>
             </div>
             <div className="mx-6 my-2 ">
               <ProgressBar percent={progress} filledBackground="#39bdc8" />
