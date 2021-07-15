@@ -34,7 +34,7 @@ function Work(props) {
         setSeconds(Math.floor(time % (1000 * 60)) / 1000);
       }
       setProgress(Math.floor(100 - (time * 100) / initialTime));
-    }, 50);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [time, start]);
 
@@ -80,7 +80,7 @@ function Work(props) {
       {/* // ! MODAL */}
       {openModal ? (
         <Modal openModal={openModal}>
-          <p className="text-medium"> Are you sure to "GIVE UP "? </p>
+          <p className="text-medium"> Are you sure to GIVE UP ? </p>
           <div className="flex justify-between p-4">
             <button
               onClick={() => setOpenModal(!openModal)}
