@@ -1,5 +1,5 @@
 {
-  "homepage" : "https://abdouAoufi.github.io/pomodoro",
+  "homepage": "",
   "name": "pomodoro",
   "version": "0.1.0",
   "private": true,
@@ -17,12 +17,15 @@
     "react-step-progress-bar": "^1.0.3",
     "react-transition-group": "^2.9.0",
     "redux": "^4.1.0",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
   },
   "scripts": {
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build ",
-    "start": "craco start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build ",
+    "start": "craco start && postcss src/css/app.css -o public/app.css",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
