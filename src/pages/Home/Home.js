@@ -67,7 +67,7 @@ function Home(props) {
         </div>
       </div>
       {/* // ? container of quicks */}
-      <div className="flex px-2 x-scroll">
+      <div className="flex px-2 overflow-auto">
         <Quick
           name="working"
           time="30"
