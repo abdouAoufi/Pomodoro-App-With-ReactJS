@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { icons, header } from "../../assets/assets";
 import { ProgressBar } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
-import Modal from "../../components/Modal/Modal";
-import TimeContext from "../../context/timeContext";
+import { timecontext } from "../../context/timecontext";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function Work(props) {
+  const { time } = useContext(timecontext);
+  console.log("===>",time);
   const [startStyle, setStartStyle] = useState(
     "py-2 px-4 rounded shadow-2xl text-white font-bold bg-my_blue"
   );

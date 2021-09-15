@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { icons, header } from "../../assets/assets";
 import Quick from "../../components/Quick/Quick";
 import { Link } from "react-router-dom";
+import { timecontext } from "../../context/timecontext";
+import { useHistory } from "react-router-dom";
 
 function Home(props) {
+  const history = useHistory();
+  const { setTime } = useContext(timecontext);
+  const startWork = (timeSelected) => {
+    setTime(timeSelected);
+    history.push("/start");
+  };
   return (
     <div>
       {/* // * NAVBAR  */}
@@ -35,11 +43,12 @@ function Home(props) {
             <img src={header} alt="header" className="w-full h-full" />
           </div>
           <div className="mx-auto my-2  text-center">
-            <Link to="/start">
-              <button className="py-2 px-4 rounded shadow-lg text-white font-bold bg-my_blue">
-                START
-              </button>
-            </Link>
+            <button
+              onClick={() => startWork(25)}
+              className="py-2 px-4 rounded shadow-lg text-white font-bold bg-my_blue"
+            >
+              START
+            </button>
           </div>
         </section>
       </main>
