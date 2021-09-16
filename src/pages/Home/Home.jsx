@@ -67,14 +67,15 @@ function Home(props) {
       </div>
       {/* // ? container of quicks */}
       <div className="flex px-2 overflow-auto">
-        <Quick name="working" time="30" color="bg-my_blue" changeTime={null} />
-        <Quick changeTime={null} name="reading" time="25" color="bg-primary" />
-        <Quick
-          changeTime={null}
-          name="learning"
-          time="35"
-          color="bg-my_red"
-        />{" "}
+        <div onClick={() => startWork(30)}>
+          <Quick name="working" time="30" color="bg-my_blue" />
+        </div>
+        <div onClick={() => startWork(25)}>
+          <Quick name="reading" time="25" color="bg-primary" />
+        </div>
+        <div onClick={() => startWork(35)}>
+          <Quick name="learning" time="35" color="bg-my_red" />{" "}
+        </div>
       </div>
       <div className="text-center mx-auto cursor-pointer mt-4">
         <svg

@@ -1,16 +1,66 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { icons, header } from "../../assets/assets";
 import { ProgressBar } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 import { timecontext } from "../../context/timecontext";
 import { Link } from "react-router-dom";
 
-function Work(props) {
+function Work() {
+  const btnStyle = {
+    start: "py-2 px-4 rounded shadow-2xl text-white font-bold bg-my_blue",
+    stop: "py-2 px-4 rounded shadow-2xl text-white font-bold bg-red-500",
+  };
   const { time } = useContext(timecontext);
-  console.log("===>",time);
-  const [startStyle, setStartStyle] = useState(
-    "py-2 px-4 rounded shadow-2xl text-white font-bold bg-my_blue"
-  );
+  const initialTime = time * 60 * 1000 || 25 * 60 * 1000;
+  const [start, setStart] = useState(false);
+  const [lap, setLap] = useState(1);
+  const [progress, setProgress] = useState(0);
+  const [minutes, setMinutes] = useState(time);
+  const [seconds, setSeconds] = useState(0);
+  const [currentTime, setCurrentTime] = useState(time * 60 * 1000);
+  const [startStyle, setStartStyle] = useState({
+    style: btnStyle.start,
+    text: "Start",
+  });
+
+  const handleTimeOperation = () => {
+    if (lap >= 4) setLap(1);
+    let updatedStyle = { ...startStyle };
+    if (!start) {
+      updatedStyle.style = btnStyle.stop;
+      updatedStyle.text = "Stop";
+    } else {
+      updatedStyle.style = btnStyle.start;
+      updatedStyle.text = "Start";
+      reset();
+    }
+    setStartStyle(updatedStyle);
+    setStart(!start);
+  };
+
+  const reset = () => {
+    setMinutes(time);
+    setSeconds(0);
+    setCurrentTime(initialTime);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentTime <= 0) {
+        handleTimeOperation();
+        reset();
+        setLap(lap + 1);
+      }
+      if (currentTime > 0 && start) {
+        setCurrentTime(currentTime - 1000);
+        setMinutes(Math.floor((currentTime % (1000 * 60 * 60)) / (1000 * 60)));
+        setSeconds(Math.floor(currentTime % (1000 * 60)) / 1000);
+      }
+      setProgress(Math.floor(100 - (currentTime * 100) / initialTime));
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [currentTime, start]);
+
   return (
     <div className="z-100">
       {/* // * NAVBAR  */}
@@ -42,20 +92,25 @@ function Work(props) {
 
       {/* // * HERO  */}
       <main>
-        <section className="mx-auto ">
+        <section className="mx-auto h-screen">
           <div className="mx-2 my-6 p-8 h-80">
             <img src={header} alt="header" className="w-full h-full" />
           </div>
           <div className="w-full flex justify-between items-center px-6">
-            <p className="font-light text-my_red ">12:24</p>
-            <p className="font-light text-my_red "> 1 of 4</p>
+            <p className="font-light text-my_red ">
+              {minutes < 10 ? `0${minutes}` : minutes} :{" "}
+              {seconds < 10 ? `0${seconds}` : seconds}
+            </p>
+            <p className="font-light text-my_red "> {lap} of 4</p>
           </div>
           <div className="mx-6 my-2 ">
-            <ProgressBar percent={12} filledBackground="#39bdc8" />
+            <ProgressBar percent={progress} filledBackground="#39bdc8" />
           </div>
           <div className="mx-auto text-center mt-16 ">
             {/* // ! START */}
-            <button className={startStyle}>cancel</button>
+            <button onClick={handleTimeOperation} className={startStyle.style}>
+              {startStyle.text}
+            </button>
           </div>
           <div className="text-center mx-auto cursor-pointer mt-12">
             <svg
